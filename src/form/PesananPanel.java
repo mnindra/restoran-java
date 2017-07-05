@@ -31,14 +31,14 @@ public class PesananPanel extends javax.swing.JPanel {
     private int harga;
     private String kategori;
     private String gambar;
-    private PemesananForm parentForm;
+    private BaseForm parentForm;
     
     
     public PesananPanel() {
         initComponents();
     }
 
-    public PesananPanel(int id_menu, String nama, int subtotal, int jumlah, int harga, String kategori, String gambar, PemesananForm parentForm) {
+    public PesananPanel(int id_menu, String nama, int subtotal, int jumlah, int harga, String kategori, String gambar, BaseForm parentForm) {
         this.id_menu = id_menu;
         this.nama = nama;
         this.subtotal = subtotal;
@@ -136,7 +136,8 @@ public class PesananPanel extends javax.swing.JPanel {
         
         // TODO add your handling code here:
         
-        this.parentForm.removePesanan(this.id_menu);
+        PemesananForm form = (PemesananForm) this.parentForm;
+        form.removePesanan(this.id_menu);
     }//GEN-LAST:event_btn_hapusActionPerformed
 
 

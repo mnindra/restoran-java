@@ -180,7 +180,7 @@ public class PemesananForm extends BaseForm {
         jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_nama = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -231,10 +231,18 @@ public class PemesananForm extends BaseForm {
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Nama Menu");
 
-        jTextField1.setBackground(new java.awt.Color(250, 250, 250));
-        jTextField1.setFont(new java.awt.Font("Hack", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setBorder(null);
+        txt_nama.setBackground(new java.awt.Color(250, 250, 250));
+        txt_nama.setFont(new java.awt.Font("Hack", 0, 12)); // NOI18N
+        txt_nama.setForeground(new java.awt.Color(102, 102, 102));
+        txt_nama.setBorder(null);
+        txt_nama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_namaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_namaKeyReleased(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -263,7 +271,7 @@ public class PemesananForm extends BaseForm {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_nama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +291,7 @@ public class PemesananForm extends BaseForm {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
@@ -375,6 +383,15 @@ public class PemesananForm extends BaseForm {
         }
     }//GEN-LAST:event_btn_selesaiActionPerformed
 
+    private void txt_namaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_namaKeyReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txt_namaKeyReleased
+
+    private void txt_namaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_namaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_namaKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -430,9 +447,9 @@ public class PemesananForm extends BaseForm {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_total;
     private javax.swing.JPanel panel_menu;
     private javax.swing.JPanel panel_pesanan;
+    private javax.swing.JTextField txt_nama;
     // End of variables declaration//GEN-END:variables
 }

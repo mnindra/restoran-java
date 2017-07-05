@@ -29,14 +29,14 @@ public class MenuPanel extends javax.swing.JPanel {
     private int harga;
     private String kategori;
     private String gambar;
-    private PemesananForm parentForm;
+    private BaseForm parentForm;
     
     
     public MenuPanel() {
         initComponents();
     }
     
-    public MenuPanel(int id_menu, String nama, int harga, String kategori, String gambar, PemesananForm parentForm) {
+    public MenuPanel(int id_menu, String nama, int harga, String kategori, String gambar, BaseForm parentForm) {
         
         this.id_menu = id_menu;
         this.nama = nama;
@@ -123,7 +123,8 @@ public class MenuPanel extends javax.swing.JPanel {
         json.put("jumlah", 1);
         json.put("subtotal", this.harga * 1);
         
-        this.parentForm.addPesanan(json);
+        PemesananForm form = (PemesananForm) this.parentForm;
+        form.addPesanan(json);
     }//GEN-LAST:event_btn_tambahActionPerformed
 
 
