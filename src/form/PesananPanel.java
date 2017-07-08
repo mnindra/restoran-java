@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
  *
  * @author aka
  */
-public class PesananPanel extends javax.swing.JPanel {
+public class PesananPanel extends javax.swing.JPanel implements Attachable {
 
     /**
      * Creates new form MenuPanel
@@ -61,6 +61,8 @@ public class PesananPanel extends javax.swing.JPanel {
         } catch (MalformedURLException ex) {
             Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        this.attached();
     }
 
     
@@ -152,4 +154,22 @@ public class PesananPanel extends javax.swing.JPanel {
     private javax.swing.JLabel label_nama;
     private javax.swing.JLabel label_subtotal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void attached() {
+        System.out.println("=====================================");
+        System.out.println("Pesanan Panel attached with data : ");
+        this.showInfo();
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("id_menu\t\t:" + this.id_menu);
+        System.out.println("nama\t\t:" + this.nama);
+        System.out.println("subtotal\t:" + this.subtotal);
+        System.out.println("jumlah\t\t:" + this.jumlah);
+        System.out.println("harga\t\t:" + this.harga);
+        System.out.println("kategori\t:" + this.kategori);
+        System.out.println("gambar\t\t:" + this.gambar);        
+    }
 }
