@@ -13,6 +13,7 @@ import javax.swing.JFrame;
  */
 abstract public class BaseForm extends JFrame {
     
-    public String baseURL = "http://localhost:8000/api/";
+    protected String baseURL = "http://localhost:8000/api/";
     
+    protected abstract void clearForm();
 }

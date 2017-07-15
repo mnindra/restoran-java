@@ -199,7 +199,7 @@ public class LoginForm extends BaseForm {
         }
     }//GEN-LAST:event_btn_loginActionPerformed
     
-    private void clearForm() {
+    protected void clearForm() {
         txt_username.setText("");
         txt_password.setText("");
     }

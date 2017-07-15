@@ -28,9 +28,9 @@ public class PemesananForm extends BaseForm {
      * Creates new form PemesananForm
      */
         
-    public JSONArray menu = new JSONArray();
-    public JSONArray pesanan = new JSONArray();
-    public int total;
+    private JSONArray menu = new JSONArray();
+    private JSONArray pesanan = new JSONArray();
+    private int total;
     
     public PemesananForm() {
         initComponents();
@@ -89,7 +89,7 @@ public class PemesananForm extends BaseForm {
         this.renderPesanan();
     }
     
-    public void getMenu() {
+    private void getMenu() {
         Get get = Http.get(baseURL + "menu");
         
         JSONParser parser = new JSONParser();
@@ -106,7 +106,7 @@ public class PemesananForm extends BaseForm {
         }
     }
     
-    public void renderMenu() {
+    private void renderMenu() {
         
         panel_menu.removeAll();
         
@@ -126,7 +126,7 @@ public class PemesananForm extends BaseForm {
         panel_menu.repaint();
     }
     
-    public void renderPesanan() {
+    private void renderPesanan() {
         panel_pesanan.removeAll();
         
         JSONParser parser = new JSONParser();
@@ -187,6 +187,7 @@ public class PemesananForm extends BaseForm {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btn_logout = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -299,7 +300,18 @@ public class PemesananForm extends BaseForm {
         jLabel6.setFont(new java.awt.Font("Hack", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Meja " + Session.nama);
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 215, 40));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 215, 40));
+
+        btn_logout.setBackground(new java.awt.Color(248, 57, 57));
+        btn_logout.setFont(new java.awt.Font("Hack", 0, 12)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(255, 255, 255));
+        btn_logout.setText("Logout");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 40));
 
@@ -316,10 +328,7 @@ public class PemesananForm extends BaseForm {
         
         if (post.responseCode() == 200) {
             JOptionPane.showMessageDialog(this, "Pemesanan berhasil silahkan tunggu pesanan anda datang", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
-            this.total = 0;
-            this.pesanan = new JSONArray();
-            this.renderPesanan();
-            label_total.setText(Integer.toString(this.total));
+            this.clearForm();
         } else {
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan, silahkan coba kembali", "Gagal", JOptionPane.WARNING_MESSAGE);
         }
@@ -332,6 +341,21 @@ public class PemesananForm extends BaseForm {
     private void txt_namaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_namaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_namaKeyPressed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        // TODO add your handling code here:
+        
+        int jawaban = JOptionPane.showConfirmDialog(this, "Anda yakin ingin logout ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        if(jawaban == JOptionPane.YES_OPTION) {
+            Session.id_meja = 0;
+            Session.nama = "";
+        
+            LoginForm login = new LoginForm();
+            login.setVisible(true);
+            this.dispose();    
+        }
+    }//GEN-LAST:event_btn_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,6 +394,7 @@ public class PemesananForm extends BaseForm {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_selesai;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -389,4 +414,12 @@ public class PemesananForm extends BaseForm {
     private javax.swing.JPanel panel_pesanan;
     private javax.swing.JTextField txt_nama;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    protected void clearForm() {
+        this.total = 0;
+        this.pesanan = new JSONArray();
+        this.renderPesanan();
+        label_total.setText(Integer.toString(this.total));
+    }
 }
